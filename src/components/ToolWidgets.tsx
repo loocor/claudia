@@ -502,7 +502,7 @@ export const ReadResultWidget: React.FC<{ content: string; filePath?: string }> 
   const isLargeFile = lineCount > 20;
 
   return (
-    <div className="rounded-lg overflow-hidden border bg-zinc-950 w-full">
+    <div className="rounded-lg overflow-hidden border bg-[var(--code-bg)] w-full">
       <div className="px-4 py-2 border-b bg-zinc-900/50 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <FileText className="h-3.5 w-3.5 text-muted-foreground" />
@@ -651,7 +651,7 @@ export const BashWidget: React.FC<{
   }
   
   return (
-    <div className="rounded-lg border bg-zinc-950 overflow-hidden">
+    <div className="rounded-lg border bg-[var(--code-bg)] overflow-hidden">
       <div className="px-4 py-2 bg-zinc-900/50 flex items-center gap-2 border-b">
         <Terminal className="h-3.5 w-3.5 text-green-500" />
         <span className="text-xs font-mono text-muted-foreground">Terminal</span>
@@ -755,9 +755,9 @@ export const WriteWidget: React.FC<{ filePath: string; content: string; result?:
         />
         
         {/* Modal content */}
-        <div className="relative w-[90vw] h-[90vh] max-w-7xl bg-zinc-950 rounded-lg border shadow-2xl overflow-hidden flex flex-col">
+        <div className="relative w-[90vw] h-[90vh] max-w-7xl bg-[var(--code-bg)] rounded-lg border shadow-2xl overflow-hidden flex flex-col">
           {/* Header */}
-          <div className="px-6 py-4 border-b bg-zinc-950 flex items-center justify-between">
+          <div className="px-6 py-4 border-b bg-[var(--code-bg)] flex items-center justify-between">
             <div className="flex items-center gap-3">
               <FileText className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm font-mono text-muted-foreground">{filePath}</span>
@@ -798,7 +798,7 @@ export const WriteWidget: React.FC<{ filePath: string; content: string; result?:
 
   const CodePreview = ({ codeContent, truncated }: { codeContent: string; truncated: boolean }) => (
     <div 
-      className="rounded-lg border bg-zinc-950 overflow-hidden w-full"
+      className="rounded-lg border bg-[var(--code-bg)] overflow-hidden w-full"
       style={{ 
         height: truncated ? '440px' : 'auto', 
         maxHeight: truncated ? '440px' : undefined,
@@ -1014,7 +1014,7 @@ export const GrepWidget: React.FC<{
               </button>
               
               {isExpanded && (
-                <div className="rounded-lg border bg-zinc-950 overflow-hidden">
+                <div className="rounded-lg border bg-[var(--code-bg)] overflow-hidden">
                   <div className="max-h-[400px] overflow-y-auto">
                     {grepResults.map((match, idx) => {
                       const fileName = match.file.split('/').pop() || match.file;
@@ -1138,7 +1138,7 @@ export const EditWidget: React.FC<{
         </code>
       </div>
 
-      <div className="rounded-lg border bg-zinc-950 overflow-hidden text-xs font-mono">
+      <div className="rounded-lg border bg-[var(--code-bg)] overflow-hidden text-xs font-mono">
         <div className="max-h-[440px] overflow-y-auto overflow-x-auto">
           {diffResult.map((part, index) => {
             const partClass = part.added 
@@ -1231,7 +1231,7 @@ export const EditResultWidget: React.FC<{ content: string }> = ({ content }) => 
   const language = getLanguage(filePath);
 
   return (
-    <div className="rounded-lg border bg-zinc-950 overflow-hidden">
+    <div className="rounded-lg border bg-[var(--code-bg)] overflow-hidden">
       <div className="px-4 py-2 border-b bg-emerald-950/30 flex items-center gap-2">
         <GitBranch className="h-3.5 w-3.5 text-emerald-500" />
         <span className="text-xs font-mono text-emerald-400">Edit Result</span>
@@ -1383,7 +1383,7 @@ export const MCPWidget: React.FC<{
           )}>
             <div className="relative">
               <div className={cn(
-                "rounded-lg border bg-zinc-950/50 overflow-hidden",
+                "rounded-lg border bg-[var(--code-bg-muted)] overflow-hidden",
                 !isExpanded && isLargeInput && "max-h-[200px]"
               )}>
                 <div className="px-3 py-2 border-b bg-zinc-900/50 flex items-center gap-2">
@@ -1452,7 +1452,7 @@ export const CommandWidget: React.FC<{
   commandArgs?: string;
 }> = ({ commandName, commandMessage, commandArgs }) => {
   return (
-    <div className="rounded-lg border bg-zinc-950/50 overflow-hidden">
+    <div className="rounded-lg border bg-[var(--code-bg-muted)] overflow-hidden">
       <div className="px-4 py-2 border-b bg-zinc-900/50 flex items-center gap-2">
         <Terminal className="h-3.5 w-3.5 text-blue-500" />
         <span className="text-xs font-mono text-blue-400">Command</span>
@@ -1532,7 +1532,7 @@ export const CommandOutputWidget: React.FC<{
   };
 
   return (
-    <div className="rounded-lg border bg-zinc-950/50 overflow-hidden">
+    <div className="rounded-lg border bg-[var(--code-bg-muted)] overflow-hidden">
       <div className="px-4 py-2 bg-zinc-900/50 flex items-center gap-2">
         <ChevronRight className="h-3 w-3 text-green-500" />
         <span className="text-xs font-mono text-green-400">Output</span>
@@ -1618,7 +1618,7 @@ export const MultiEditWidget: React.FC<{
                 return (
                   <div key={index} className="space-y-1">
                     <div className="text-xs font-medium text-muted-foreground">Edit {index + 1}</div>
-                    <div className="rounded-lg border bg-zinc-950 overflow-hidden text-xs font-mono">
+                    <div className="rounded-lg border bg-[var(--code-bg)] overflow-hidden text-xs font-mono">
                       <div className="max-h-[300px] overflow-y-auto overflow-x-auto">
                         {diffResult.map((part, partIndex) => {
                           const partClass = part.added 

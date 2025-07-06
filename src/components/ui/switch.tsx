@@ -34,16 +34,19 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
           className
         )}
         style={{
-          backgroundColor: checked ? "var(--color-primary)" : "var(--color-muted)"
+          backgroundColor: checked ? "var(--color-primary)" : "var(--color-muted)",
+          borderColor: checked ? "transparent" : "var(--color-border-subtle)" // 未启用状态添加边框增强对比度
         }}
       >
         <span
           className={cn(
-            "pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 transition-transform",
+            "pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 transition-transform border",
             checked ? "translate-x-4" : "translate-x-0"
           )}
           style={{
-            backgroundColor: "var(--color-background)"
+            backgroundColor: "var(--color-background)",
+            borderColor: checked ? "transparent" : "var(--color-border)",
+            boxShadow: checked ? "none" : "0 1px 2px rgba(0,0,0,0.2)" // 未激活状态添加阴影增强视觉效果
           }}
         />
         <input

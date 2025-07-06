@@ -1,7 +1,114 @@
 @import "tailwindcss";
 
-/* Dark theme configuration */
-@theme {
+/* Dark theme */
+:root {
+  /* Colors */
+  --color-background: oklch(0.98 0.01 240);
+  --color-foreground: oklch(0.15 0.01 240);
+  --color-card: oklch(0.95 0.01 240);
+  --color-card-foreground: oklch(0.15 0.01 240);
+  --color-popover: oklch(0.98 0.01 240);
+  --color-popover-foreground: oklch(0.15 0.01 240);
+  --color-primary: oklch(0.4 0.15 260);
+  --color-primary-foreground: oklch(0.98 0.01 240);
+  --color-secondary: oklch(0.9 0.02 240);
+  --color-secondary-foreground: oklch(0.15 0.01 240);
+  --color-muted: oklch(0.9 0.01 240);
+  --color-muted-foreground: oklch(0.45 0.01 240);
+  --color-accent: oklch(0.85 0.05 260);
+  --color-accent-foreground: oklch(0.15 0.01 240);
+  --color-destructive: oklch(0.6 0.2 25);
+  --color-destructive-foreground: oklch(0.98 0.01 240);
+  --color-border: oklch(0.85 0.01 240);
+  --color-input: oklch(0.9 0.01 240);
+  --color-ring: oklch(0.6 0.15 260);
+
+  /* Additional colors for status messages */
+  --color-green-500: oklch(0.72 0.20 142);
+  --color-green-600: oklch(0.64 0.22 142);
+
+  /* Markdown Editor Light Mode Styles */
+  --color-border-default: rgb(208, 215, 222);
+  --color-canvas-default: rgb(255, 255, 255);
+  --color-canvas-subtle: rgb(246, 248, 250);
+  --color-fg-default: rgb(36, 41, 47);
+  --color-fg-muted: rgb(87, 96, 106);
+  --color-fg-subtle: rgb(140, 149, 159);
+  --color-accent-fg: rgb(9, 105, 218);
+  --color-danger-fg: rgb(207, 34, 46);
+}
+
+/* Dark theme: applied when user system preference is set to dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colors */
+    --color-background: oklch(0.12 0.01 240);
+    --color-foreground: oklch(0.98 0.01 240);
+    --color-card: oklch(0.14 0.01 240);
+    --color-card-foreground: oklch(0.98 0.01 240);
+    --color-popover: oklch(0.12 0.01 240);
+    --color-popover-foreground: oklch(0.98 0.01 240);
+    --color-primary: oklch(0.98 0.01 240);
+    --color-primary-foreground: oklch(0.17 0.01 240);
+    --color-secondary: oklch(0.16 0.01 240);
+    --color-secondary-foreground: oklch(0.98 0.01 240);
+    --color-muted: oklch(0.16 0.01 240);
+    --color-muted-foreground: oklch(0.75 0.01 240); /* 提高前景对比度 */
+    --color-accent: oklch(0.16 0.01 240);
+    --color-accent-foreground: oklch(0.98 0.01 240);
+    --color-destructive: oklch(0.6 0.2 25);
+    --color-destructive-foreground: oklch(0.98 0.01 240);
+    --color-border: oklch(0.30 0.01 240); /* 提高边框对比度 */
+    --color-input: oklch(0.16 0.01 240);
+    --color-ring: oklch(0.60 0.015 240); /* 提高环形对比度 */
+
+    /* Code block themes */
+    --code-bg: oklch(0.12 0.01 240); /* 深色主题代码背景 - 与 bg-zinc-950 近似 */
+    --code-bg-muted: oklch(0.14 0.01 240); /* 深色主题半透明代码背景 */
+    --code-fg: oklch(0.90 0.01 240); /* 深色主题代码文本 */
+
+    /* Markdown Editor Dark Mode Styles */
+    --color-border-default: rgb(48, 54, 61);
+    --color-canvas-default: rgb(13, 17, 23);
+    --color-canvas-subtle: rgb(22, 27, 34);
+    --color-fg-default: rgb(201, 209, 217);
+    --color-fg-muted: rgb(139, 148, 158);
+    --color-fg-subtle: rgb(110, 118, 129);
+    --color-accent-fg: rgb(88, 166, 255);
+    --color-danger-fg: rgb(248, 81, 73);
+  }
+}
+
+/* For manually switching themes - for future toggle functionality */
+[data-theme="light"] {
+  /* Colors */
+  --color-background: oklch(0.98 0.01 240);
+  --color-foreground: oklch(0.15 0.01 240);
+  --color-card: oklch(0.95 0.01 240);
+  --color-card-foreground: oklch(0.15 0.01 240);
+  --color-popover: oklch(0.98 0.01 240);
+  --color-popover-foreground: oklch(0.15 0.01 240);
+  --color-primary: oklch(0.4 0.15 260);
+  --color-primary-foreground: oklch(0.98 0.01 240);
+  --color-secondary: oklch(0.9 0.02 240);
+  --color-secondary-foreground: oklch(0.15 0.01 240);
+  --color-muted: oklch(0.9 0.01 240);
+  --color-muted-foreground: oklch(0.45 0.01 240);
+  --color-accent: oklch(0.85 0.05 260);
+  --color-accent-foreground: oklch(0.15 0.01 240);
+  --color-destructive: oklch(0.6 0.2 25);
+  --color-destructive-foreground: oklch(0.98 0.01 240);
+  --color-border: oklch(0.85 0.01 240);
+  --color-input: oklch(0.9 0.01 240);
+  --color-ring: oklch(0.6 0.15 260);
+
+  /* Code block themes - 统一为深色风格，无论亮暗主题切换 */
+  --code-bg: oklch(0.12 0.01 240); /* 代码背景 - 深色 */
+  --code-bg-muted: oklch(0.14 0.01 240); /* 半透明代码背景 - 深色 */
+  --code-fg: oklch(0.90 0.01 240); /* 代码文本 - 亮色 */
+}
+
+[data-theme="dark"] {
   /* Colors */
   --color-background: oklch(0.12 0.01 240);
   --color-foreground: oklch(0.98 0.01 240);
@@ -14,15 +121,44 @@
   --color-secondary: oklch(0.16 0.01 240);
   --color-secondary-foreground: oklch(0.98 0.01 240);
   --color-muted: oklch(0.16 0.01 240);
-  --color-muted-foreground: oklch(0.68 0.01 240);
+  --color-muted-foreground: oklch(0.75 0.01 240); /* 提高前景对比度 */
   --color-accent: oklch(0.16 0.01 240);
   --color-accent-foreground: oklch(0.98 0.01 240);
   --color-destructive: oklch(0.6 0.2 25);
   --color-destructive-foreground: oklch(0.98 0.01 240);
-  --color-border: oklch(0.16 0.01 240);
+  --color-border: oklch(0.30 0.01 240); /* 提高边框对比度 */
   --color-input: oklch(0.16 0.01 240);
-  --color-ring: oklch(0.52 0.015 240);
-  
+  --color-ring: oklch(0.60 0.015 240); /* 提高环形对比度 */
+
+  /* Code block themes */
+  --code-bg: oklch(0.12 0.01 240); /* 深色主题代码背景 - 与 bg-zinc-950 近似 */
+  --code-bg-muted: oklch(0.14 0.01 240); /* 深色主题半透明代码背景 */
+  --code-fg: oklch(0.90 0.01 240); /* 深色主题代码文本 */
+}
+
+/* Border radius */
+@theme {
+  /* Colors */
+  --color-background: oklch(0.98 0.01 240);
+  --color-foreground: oklch(0.15 0.01 240);
+  --color-card: oklch(0.95 0.01 240);
+  --color-card-foreground: oklch(0.15 0.01 240);
+  --color-popover: oklch(0.98 0.01 240);
+  --color-popover-foreground: oklch(0.15 0.01 240);
+  --color-primary: oklch(0.4 0.15 260);
+  --color-primary-foreground: oklch(0.98 0.01 240);
+  --color-secondary: oklch(0.9 0.02 240);
+  --color-secondary-foreground: oklch(0.15 0.01 240);
+  --color-muted: oklch(0.9 0.01 240);
+  --color-muted-foreground: oklch(0.45 0.01 240);
+  --color-accent: oklch(0.85 0.05 260);
+  --color-accent-foreground: oklch(0.15 0.01 240);
+  --color-destructive: oklch(0.6 0.2 25);
+  --color-destructive-foreground: oklch(0.98 0.01 240);
+  --color-border: oklch(0.85 0.01 240);
+  --color-input: oklch(0.9 0.01 240);
+  --color-ring: oklch(0.6 0.15 260);
+
   /* Additional colors for status messages */
   --color-green-500: oklch(0.72 0.20 142);
   --color-green-600: oklch(0.64 0.22 142);
@@ -46,6 +182,29 @@
 /* Reset and base styles */
 * {
   border-color: var(--color-border);
+}
+
+/* 增强深色模式下的outline按钮可见性 */
+@media (prefers-color-scheme: dark) {
+  .bg-background button[class*="outline"] {
+    border-color: oklch(0.5 0.01 240); /* 明显的边框颜色 */
+    color: oklch(0.9 0.01 240); /* 更亮的文字颜色 */
+  }
+  
+  .bg-background button[class*="outline"]:hover {
+    background-color: oklch(0.2 0.01 240); /* 悬停时更明显的背景 */
+    border-color: oklch(0.6 0.01 240); /* 悬停时更明显的边框 */
+  }
+}
+
+[data-theme="dark"] button[class*="outline"] {
+  border-color: oklch(0.5 0.01 240); /* 明显的边框颜色 */
+  color: oklch(0.9 0.01 240); /* 更亮的文字颜色 */
+}
+
+[data-theme="dark"] button[class*="outline"]:hover {
+  background-color: oklch(0.2 0.01 240); /* 悬停时更明显的背景 */
+  border-color: oklch(0.6 0.01 240); /* 悬停时更明显的边框 */
 }
 
 body {
@@ -158,15 +317,15 @@ button:focus-visible,
 }
 
 /* Markdown Editor Dark Mode Styles */
-[data-color-mode="dark"] {
-  --color-border-default: rgb(48, 54, 61);
-  --color-canvas-default: rgb(13, 17, 23);
-  --color-canvas-subtle: rgb(22, 27, 34);
-  --color-fg-default: rgb(201, 209, 217);
-  --color-fg-muted: rgb(139, 148, 158);
-  --color-fg-subtle: rgb(110, 118, 129);
-  --color-accent-fg: rgb(88, 166, 255);
-  --color-danger-fg: rgb(248, 81, 73);
+[data-color-mode="light"] {
+  --color-border-default: rgb(208, 215, 222);
+  --color-canvas-default: rgb(255, 255, 255);
+  --color-canvas-subtle: rgb(246, 248, 250);
+  --color-fg-default: rgb(36, 41, 47);
+  --color-fg-muted: rgb(87, 96, 106);
+  --color-fg-subtle: rgb(140, 149, 159);
+  --color-accent-fg: rgb(9, 105, 218);
+  --color-danger-fg: rgb(207, 34, 46);
 }
 
 .w-md-editor {
@@ -248,7 +407,12 @@ button:focus-visible,
   margin-bottom: 1.2em;
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
   margin-top: 0;
   margin-bottom: 0.8888889em;
   font-weight: 600;
@@ -281,7 +445,8 @@ button:focus-visible,
   font-weight: 600;
 }
 
-.prose ol, .prose ul {
+.prose ol,
+.prose ul {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
   padding-left: 1.625em;
@@ -292,12 +457,12 @@ button:focus-visible,
   margin-bottom: 0.5em;
 }
 
-.prose > ul > li p {
+.prose>ul>li p {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-.prose > ol > li > *:first-child {
+.prose>ol>li>*:first-child {
   margin-top: 1.25em;
 }
 
@@ -307,6 +472,7 @@ button:focus-visible,
   background-color: var(--color-muted);
   padding: 0.125em 0.375em;
   border-radius: 0.25rem;
+  color: var(--color-foreground);
 }
 
 .prose pre {
@@ -385,16 +551,73 @@ button:focus-visible,
 }
 
 /* Dark mode adjustments */
+.prose.light\:prose,
+.prose {
+  color: var(--color-foreground);
+}
+
 .prose.dark\:prose-invert {
   color: var(--color-foreground);
+}
+
+/* 亮色主题下代码区域样式 */
+:root {
+  --light-code-bg: #f5f5f5;
+  --light-code-color: #333333;
+  --light-code-border: #e0e0e0;
+}
+
+[data-theme="light"] .prose code,
+:root:not([data-theme="dark"]) .prose code {
+  background-color: var(--light-code-bg);
+  color: var(--light-code-color);
+  border: 1px solid var(--light-code-border);
+}
+
+[data-theme="light"] .prose pre,
+:root:not([data-theme="dark"]) .prose pre {
+  background-color: var(--light-code-bg);
+  color: var(--light-code-color);
+  border: 1px solid var(--light-code-border);
+}
+
+/* 确保media query覆盖默认样式 */
+@media (prefers-color-scheme: light) {
+  .prose code {
+    background-color: var(--light-code-bg);
+    color: var(--light-code-color);
+    border: 1px solid var(--light-code-border);
+  }
+
+  .prose pre {
+    background-color: var(--light-code-bg);
+    color: var(--light-code-color);
+    border: 1px solid var(--light-code-border);
+  }
+}
+
+.prose.light\:prose a,
+.prose a {
+  color: var(--color-primary);
 }
 
 .prose.dark\:prose-invert a {
   color: var(--color-primary);
 }
 
+.prose.light\:prose strong,
+.prose strong {
+  color: inherit;
+}
+
 .prose.dark\:prose-invert strong {
   color: inherit;
+}
+
+.prose.light\:prose code,
+.prose code {
+  color: var(--color-foreground);
+  background-color: var(--color-muted);
 }
 
 .prose.dark\:prose-invert code {
@@ -422,11 +645,30 @@ button:focus-visible,
 
 /* Rotating symbol animation */
 @keyframes rotate-symbol {
-  0%   { content: "◐"; transform: scale(1); }
-  25%  { content: "◓"; transform: scale(1); }
-  50%  { content: "◑"; transform: scale(1); }
-  75%  { content: "◒"; transform: scale(1); }
-  100% { content: "◐"; transform: scale(1); }
+  0% {
+    content: "◐";
+    transform: scale(1);
+  }
+
+  25% {
+    content: "◓";
+    transform: scale(1);
+  }
+
+  50% {
+    content: "◑";
+    transform: scale(1);
+  }
+
+  75% {
+    content: "◒";
+    transform: scale(1);
+  }
+
+  100% {
+    content: "◐";
+    transform: scale(1);
+  }
 }
 
 @keyframes fade-in {
@@ -434,6 +676,7 @@ button:focus-visible,
     opacity: 0;
     transform: scale(0.8);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -446,7 +689,8 @@ button:focus-visible,
   line-height: 1;
   animation: fade-in 0.2s ease-out;
   font-weight: normal;
-  font-size: 1.5rem; /* Make it bigger! */
+  font-size: 1.5rem;
+  /* Make it bigger! */
   position: relative;
   top: -2px;
 }
@@ -468,6 +712,7 @@ button:focus-visible,
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -485,12 +730,10 @@ button:focus-visible,
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent);
   transition: left 0.5s;
 }
 
@@ -526,17 +769,15 @@ button:focus-visible,
   inset: -2px;
   padding: 2px;
   border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    transparent 0%,
-    transparent 85%,
-    #d97757 90%,
-    #ff9a7a 92.5%,
-    #d97757 95%,
-    transparent 100%
-  );
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  background: conic-gradient(from var(--angle),
+      transparent 0%,
+      transparent 85%,
+      #d97757 90%,
+      #ff9a7a 92.5%,
+      #d97757 95%,
+      transparent 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -551,7 +792,7 @@ button:focus-visible,
 }
 
 /* Ensure the card content stays above the border effect */
-.trailing-border > * {
+.trailing-border>* {
   position: relative;
   z-index: 1;
 }
@@ -612,20 +853,24 @@ code::-webkit-scrollbar-thumb:hover,
 }
 
 /* Syntax highlighter specific */
+.bg-\[var\(--code-bg\)\] ::-webkit-scrollbar,
 .bg-zinc-950 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
+.bg-\[var\(--code-bg\)\] ::-webkit-scrollbar-track,
 .bg-zinc-950 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.bg-\[var\(--code-bg\)\] ::-webkit-scrollbar-thumb,
 .bg-zinc-950 ::-webkit-scrollbar-thumb {
   background-color: rgba(107, 114, 128, 0.3);
   border-radius: 4px;
 }
 
+.bg-\[var\(--code-bg\)\] ::-webkit-scrollbar-thumb:hover,
 .bg-zinc-950 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(107, 114, 128, 0.5);
 }
@@ -672,6 +917,7 @@ code::-webkit-scrollbar-thumb:hover,
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -686,9 +932,11 @@ code::-webkit-scrollbar-thumb:hover,
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -704,10 +952,12 @@ code::-webkit-scrollbar-thumb:hover,
     transform: scale(1) translateY(0);
     opacity: 1;
   }
+
   50% {
     transform: scale(0.3) translateY(50%);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(0.1) translateY(100vh);
     opacity: 0;
@@ -716,4 +966,4 @@ code::-webkit-scrollbar-thumb:hover,
 
 .image-move-to-input {
   animation: moveToInput 0.8s ease-in-out forwards;
-} 
+}

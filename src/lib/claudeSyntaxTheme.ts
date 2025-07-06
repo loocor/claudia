@@ -1,8 +1,10 @@
 /**
  * Claude-themed syntax highlighting theme
- * Features orange, purple, and violet colors to match Claude's aesthetic
+ * Uses a dark theme for code blocks regardless of UI theme
  */
-export const claudeSyntaxTheme: any = {
+
+// 深色主题
+const claudeDarkSyntaxTheme: any = {
   'code[class*="language-"]': {
     color: '#e3e8f0',
     background: 'transparent',
@@ -172,4 +174,8 @@ export const claudeSyntaxTheme: any = {
   'module': {
     color: '#8b5cf6', // Violet
   },
-}; 
+};
+
+
+// 无论当前主题如何，始终使用深色主题风格的代码高亮
+export const claudeSyntaxTheme = claudeDarkSyntaxTheme; // 始终使用深色主题，确保代码区在亮色/深色UI下都保持深色风格

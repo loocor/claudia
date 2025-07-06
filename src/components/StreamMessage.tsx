@@ -130,20 +130,41 @@ const StreamMessageComponent: React.FC<StreamMessageProps> = ({ message, classNa
                             code({ node, inline, className, children, ...props }: any) {
                               const match = /language-(\w+)/.exec(className || '');
                               return !inline && match ? (
-                                <SyntaxHighlighter
-                                  style={claudeSyntaxTheme}
-                                  language={match[1]}
-                                  PreTag="div"
+                                <div className="code-block" style={{ 
+                                  backgroundColor: 'var(--code-bg)',
+                                  borderRadius: '0.375rem',
+                                  border: '1px solid var(--color-border)',
+                                  marginBottom: '1rem'
+                                }}>
+                                  <SyntaxHighlighter
+                                    style={claudeSyntaxTheme}
+                                    language={match[1]}
+                                    PreTag="div"
+                                    customStyle={{
+                                      backgroundColor: 'transparent',
+                                      padding: '1rem',
+                                      margin: 0,
+                                      borderRadius: '0.375rem'
+                                    }}
+                                    {...props}
+                                  >
+                                    {String(children).replace(/\n$/, '')}
+                                  </SyntaxHighlighter>
+                                </div>
+                              ) : (
+                                <code className={className} 
+                                  style={{
+                                    backgroundColor: 'var(--code-bg)',
+                                    color: 'var(--color-foreground)',
+                                    borderRadius: '0.25rem',
+                                    padding: '0.1em 0.3em'
+                                  }}
                                   {...props}
                                 >
-                                  {String(children).replace(/\n$/, '')}
-                                </SyntaxHighlighter>
-                              ) : (
-                                <code className={className} {...props}>
                                   {children}
                                 </code>
                               );
-                            }
+                            }  
                           }}
                         >
                           {textContent}
@@ -646,7 +667,7 @@ const StreamMessageComponent: React.FC<StreamMessageProps> = ({ message, classNa
               ) : (
                 <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5" />
               )}
-              <div className="flex-1 space-y-2">
+              <div className="flex-1">
                 <h4 className="font-semibold text-sm">
                   {isError ? "Execution Failed" : "Execution Complete"}
                 </h4>
@@ -659,16 +680,38 @@ const StreamMessageComponent: React.FC<StreamMessageProps> = ({ message, classNa
                         code({ node, inline, className, children, ...props }: any) {
                           const match = /language-(\w+)/.exec(className || '');
                           return !inline && match ? (
-                            <SyntaxHighlighter
-                              style={claudeSyntaxTheme}
-                              language={match[1]}
-                              PreTag="div"
+                            <div className="code-block" style={{
+                              backgroundColor: 'var(--code-bg)',
+                              borderRadius: '0.375rem',
+                              border: '1px solid var(--color-border)',
+                              marginBottom: '1rem'
+                            }}>
+                              <SyntaxHighlighter
+                                style={claudeSyntaxTheme}
+                                language={match[1]}
+                                PreTag="div"
+                                customStyle={{
+                                  backgroundColor: 'transparent',
+                                  padding: '1rem',
+                                  margin: 0,
+                                  borderRadius: '0.375rem'
+                                }}
+                                {...props}
+                              >
+                                {String(children).replace(/\n$/, '')}
+                              </SyntaxHighlighter>
+                            </div>
+                          ) : (
+                            <code 
+                              className={className} 
+                              style={{ 
+                                backgroundColor: 'var(--code-bg)',
+                                color: 'var(--color-foreground)',
+                                borderRadius: '0.25rem',
+                                padding: '0.1em 0.3em'
+                              }}
                               {...props}
                             >
-                              {String(children).replace(/\n$/, '')}
-                            </SyntaxHighlighter>
-                          ) : (
-                            <code className={className} {...props}>
                               {children}
                             </code>
                           );
